@@ -54,8 +54,9 @@ jobs:
       - name: Start docker
         run: docker compose up -d & wait
       - run: ls
-      - run: cd ci
       - name: run functional test
-        run: python functional-testing.py
+        run: |
+            cd ci
+            python functional-testing.py
 
 
