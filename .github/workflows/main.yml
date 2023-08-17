@@ -1,14 +1,29 @@
 name: Main
+env:
+  docker_username: ${{ github.repository_owner }}
+  docker_password: ${{ secrets.GITHUB_TOKEN }}
+  VERSION_TAG: 0.0.1
+  
 on: 
   push:
   pull_request:
-
 jobs: 
   Test:
     runs-on: self-hosted
-    container: golang:bookworm
+    container: golang:1.21.0-bookworm
     steps:
       - name: clone-down
         uses: actions/checkout@v3
       - name: Test
-        run: chmod +x ci/unit-test.sh && ci/unit-test.sh
+        run: bash -eux ci/unit-test.sh
+  Docker-build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: clone-down
+        uses: actions/checkout@v3
+      - name: docker compose build
+        run: docker compose build
+      - name: docker push
+        run: bash -eux ci/docker-push.sh
