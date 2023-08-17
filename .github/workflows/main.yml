@@ -1,0 +1,11 @@
+name: Main
+on: push
+jobs: 
+  Test:
+    runs-on: self-hosted
+    container: golang:bookworm
+    steps:
+      - name: clone-down
+        uses: actions/checkout@v3
+      - name: Test
+        run: chmod +x ci/unit-test.sh && ci/unit-test.sh
