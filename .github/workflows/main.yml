@@ -68,20 +68,9 @@ jobs:
             python functional-testing.py
 
   Deployment:
-    #uses: ./.github/workflows/deployment.yml
+    uses: ./.github/workflows/deployment.yml
     #needs: [Docker-build-push]
-    runs-on: ubuntu-latest
-    steps:
-      - name: clone-repository
-        uses: actions/checkout@v3
 
-      - name: copy kubeconfig secret
-        run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
 
-      - name: cat frontend yaml file
-        run: cat kubernetes/frontend-deployment.yaml
-
-      - name: deploying on cluster
-        run: kubectl --kubeconfig kubeconfig apply -f kubernetes/.
 
 
