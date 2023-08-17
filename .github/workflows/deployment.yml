@@ -2,15 +2,8 @@ name: Deployment
 
 # Allows you to run this workflow manually from the Actions tab
 on:
-  workflow_dispatch:
+  #workflow_dispatch:
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
-    secrets:
-      token:
-        required: true
 
 jobs:
   Deployment:
