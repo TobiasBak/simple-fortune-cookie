@@ -1,6 +1,9 @@
 #!/bin/bash
 echo "$docker_password" | docker login ghcr.io --username "$docker_username" --password-stdin
 
+docker_username_lower=$(echo "$docker_username" | tr '[:upper:]' '[:lower:]')
+docker_username=$docker_username_lower
+
 export backendVersion="ghcr.io/$docker_username/fortune-cookie/backend:$VERSION_TAG" 
 export backendLatest="ghcr.io/$docker_username/fortune-cookie/backend:latest" 
 
