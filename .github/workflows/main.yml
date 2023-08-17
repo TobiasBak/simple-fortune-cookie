@@ -14,7 +14,7 @@ jobs:
       - name: clone-down
         uses: actions/checkout@v3
       - name: Test
-        run: chmod +x ci/unit-test.sh && ci/unit-test.sh
+        run: bash -eux ci/unit-test.sh
   Docker-build-push:
     runs-on: ubuntu-latest
     permissions:
@@ -25,4 +25,4 @@ jobs:
       - name: docker compose build
         run: docker compose build
       - name: docker push
-        run: chmod +x ci/docker-push.sh && ci/docker-push.sh
+        run: bash -eux ci/docker-push.sh
