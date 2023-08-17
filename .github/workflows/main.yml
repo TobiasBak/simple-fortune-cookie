@@ -1,5 +1,10 @@
 name: Main
 on: push
+
+env:
+  docker_username: ${{ github.actor }}
+  docker_password: ${{  secrets.GITHUB_TOKEN }}
+
 jobs: 
   Test:
     runs-on: self-hosted
@@ -14,8 +19,6 @@ jobs:
     steps:
       - name: clone-down
         uses: actions/checkout@v3
-      - name: Version tag
-        run: export VERSION_TAG=0.0.1
       - name: docker compose build
         run: export VERSION_TAG=0.0.1 && docker compose build
       - name: docker push
