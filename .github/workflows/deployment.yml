@@ -4,6 +4,9 @@ name: Deployment
 on:
   #workflow_dispatch:
   workflow_call:
+    secrets:
+      KUBECONFIG:
+        required: true
 
 jobs:
   Deployment:
