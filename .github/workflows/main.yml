@@ -69,6 +69,6 @@ jobs:
 
   Deployment:
     uses: ./.github/workflows/deployment.yml
-    needs: [Docker-build-push]
+    #needs: [Docker-build-push]
 
 
