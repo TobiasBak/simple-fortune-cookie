@@ -48,6 +48,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: ci-folder
+          path: ci
       - name: docker pull images
         run: docker compose pull
       - name: Start docker
