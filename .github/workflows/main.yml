@@ -19,4 +19,4 @@ jobs:
       - name: show directory
         run: ls
       - name: docker push
-        run: ci/docker-push.sh
+        run: chmod +x ci/docker-push.sh && ci/docker-push.sh
