@@ -48,11 +48,15 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: ci-folder
+          path: ci
       - name: docker pull images
         run: docker compose pull
       - name: Start docker
         run: docker compose up -d & wait
+      - run: ls
       - name: run functional test
-        run: python ci/functional-testing.py
+        run: |
+            cd ci
+            python functional-testing.py
 
 
