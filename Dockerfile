@@ -1,0 +1,15 @@
+ARG GO_VERSION=1.21.0
+FROM golang:${GO_VERSION} as builder
+
+COPY . /app
+
+WORKDIR /app 
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o appliation
+
+FROM scratch as production
+
+COPY --from=builder /app/appliation /application
+
+ENTRYPOINT [ "/application" ]
+
