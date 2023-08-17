@@ -19,7 +19,7 @@ services:
       target: debug
     environment:
       - BACKEND_PORT=9000
-      - BACKEND_DNS=backend
+      - BACKEND_DNS=localhost
 
   backend:
     image: ghcr.io/tobiasbak/fortune-cookie/backend:${VERSION_TAG}
