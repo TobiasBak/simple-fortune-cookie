@@ -68,8 +68,6 @@ jobs:
             python functional-testing.py
 
   Deployment:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/deployment.yml
+    uses: ./.github/workflows/deployment.yml
 
 
