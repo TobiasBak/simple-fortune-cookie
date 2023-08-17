@@ -3,9 +3,18 @@ on: push
 jobs: 
   Test:
     runs-on: self-hosted
-    container: golang:bookworm
+    container: golang:1.21.0-bookworm
     steps:
       - name: clone-down
         uses: actions/checkout@v3
       - name: Test
         run: chmod +x ci/unit-test.sh && ci/unit-test.sh
+  Docker-build-push:
+    runs-on: self-hosted
+    steps:
+      - name: clone-down
+        uses: actions/checkout@v3
+      - name: docker compose build
+        run:  docker compose build .
+      - name: docker push
+        run: ci/docker-push.sh
