@@ -9,7 +9,7 @@ on:
   pull_request:
 jobs: 
   Test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container: golang:1.21.0-bookworm
     steps:
       - name: clone-down
