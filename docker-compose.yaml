@@ -10,7 +10,7 @@ services:
       - 8080:8080
     environment:
       - BACKEND_PORT=9000
-      - BACKEND_DNS=backend
+      - BACKEND_DNS=localhost
   frontend-debug:
     image: ghcr.io/tobiasbak/fortune-cookie/frontend:${VERSION_TAG}-debug
     build:
@@ -19,7 +19,7 @@ services:
       target: debug
     environment:
       - BACKEND_PORT=9000
-      - BACKEND_DNS=backend
+      - BACKEND_DNS=localhost
 
   backend:
     image: ghcr.io/tobiasbak/fortune-cookie/backend:${VERSION_TAG}
@@ -27,13 +27,13 @@ services:
       context: ./backend
       dockerfile: Dockerfile
       target: production
-    #environment:
-    #  - REDIS_DNS=redis
+    environment:
+      - REDIS_DNS=redis
   backend-debug:
     image: ghcr.io/tobiasbak/fortune-cookie/backend:${VERSION_TAG}-debug
     build:
       context: ./backend
       dockerfile: Dockerfile
       target: debug
-    #environment:
-    #  - REDIS_DNS=redis
+    environment:
+      - REDIS_DNS=redis

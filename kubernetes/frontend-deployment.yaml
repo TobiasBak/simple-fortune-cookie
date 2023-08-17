@@ -22,6 +22,8 @@ spec:
             value: backend
           - name: BACKEND_PORT
             value: "9000"
+          - name: BACKEND_DNS
+            value: backend
         resources:
           limits:
             memory: "128Mi"
