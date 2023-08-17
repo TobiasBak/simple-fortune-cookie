@@ -5,7 +5,7 @@ metadata:
   labels: 
     app: frontend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -17,6 +17,11 @@ spec:
       containers:
       - name: fortune-cookie-frontend
         image: ghcr.io/tobiasbak/fortune-cookie/frontend:latest
+        env:
+          - name: BACKEND_HOST
+            value: backend
+          - name: BACKEND_PORT
+            value: "9000"
         resources:
           limits:
             memory: "128Mi"
