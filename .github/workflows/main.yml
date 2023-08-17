@@ -10,7 +10,7 @@ jobs:
       - name: Test
         run: chmod +x ci/unit-test.sh && ci/unit-test.sh
   Docker-build-push:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: clone-down
         uses: actions/checkout@v3
