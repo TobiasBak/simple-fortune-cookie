@@ -40,7 +40,7 @@ jobs:
         run: bash -eux ci/docker-push.sh
   Docker-functional-testing:
     runs-on: ubuntu-latest
-    depends-on: [Docker-build-push]
+    needs: [Docker-build-push]
     steps:
       - uses: actions/download-artifact@v3
         with:
