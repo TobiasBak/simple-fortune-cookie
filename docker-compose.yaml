@@ -37,5 +37,3 @@ services:
       target: debug
     environment:
       - REDIS_DNS=redis
-
-      
