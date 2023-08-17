@@ -2,11 +2,14 @@ name: Deployment
 
 # Allows you to run this workflow manually from the Actions tab
 on:
-  workflow_dispatch:
+  #workflow_dispatch:
   workflow_call:
+    secrets:
+      KUBECONFIG:
+        required: true
 
 jobs:
-  Deploymnent:
+  Deployment:
     runs-on: ubuntu-latest
     steps:
       - name: clone-repository
@@ -14,6 +17,9 @@ jobs:
 
       - name: copy kubeconfig secret
         run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
+
+      - name: cat frontend yaml file
+        run: cat kubernetes/frontend-deployment.yaml
 
       - name: deploying on cluster
         run: kubectl --kubeconfig kubeconfig apply -f kubernetes/.

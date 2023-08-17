@@ -69,5 +69,10 @@ jobs:
 
   Deployment:
     uses: ./.github/workflows/deployment.yml
+    secrets:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+    #needs: [Docker-build-push]
+
+
 
 
