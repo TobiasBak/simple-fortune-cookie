@@ -1,0 +1,5 @@
+endpoints:
+  - "/"
+  - "/script.js"
+  - "/api/all"
+  - "/api/random"
