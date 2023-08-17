@@ -2,8 +2,8 @@ name: Main
 on: push
 
 env:
-  docker_username: ${{ github.actor }}
-  docker_password: ${{  secrets.GITHUB_TOKEN }}
+  docker_username: ${{ github.repository_owner }}
+  docker_password: ${{ secrets.GITHUB_TOKEN }}
 
 jobs: 
   Test:
