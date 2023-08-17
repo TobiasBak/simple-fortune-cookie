@@ -17,6 +17,8 @@ jobs:
         run: chmod +x ci/unit-test.sh && ci/unit-test.sh
   Docker-build-push:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - name: clone-down
         uses: actions/checkout@v3
