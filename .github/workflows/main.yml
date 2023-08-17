@@ -17,6 +17,6 @@ jobs:
       - name: Version tag
         run: export VERSION_TAG=0.0.1
       - name: docker compose build
-        run:  docker compose build
+        run: export VERSION_TAG=0.0.1 && docker compose build
       - name: docker push
         run: chmod +x ci/docker-push.sh && ci/docker-push.sh
