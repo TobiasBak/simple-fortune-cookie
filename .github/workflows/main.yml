@@ -23,6 +23,7 @@ jobs:
     steps:
       - name: clone-down
         uses: actions/checkout@v3
+      - run: ls
       - name: docker compose build
         run: docker compose build
       - name: docker push
