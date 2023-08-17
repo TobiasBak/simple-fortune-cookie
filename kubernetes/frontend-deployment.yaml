@@ -21,3 +21,9 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        env:
+          - name: BACKEND_HOST
+            value: backend
+          - name: BACKEND_PORT
+            value: "9000"
+
