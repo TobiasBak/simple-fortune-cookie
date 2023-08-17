@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: clone-repository
-        run: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: copy kubeconfig secret
         run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
