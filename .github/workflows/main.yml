@@ -1,0 +1,11 @@
+name: Main
+on: push
+jobs: 
+  Build:
+    runs-on: ubuntu-latest
+    container: golang:bookworm
+    steps:
+      - name: clone-down
+        uses: actions/checkout@v3
+      - name: Test
+        run: ci/unit-test.sh
