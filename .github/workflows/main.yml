@@ -4,6 +4,7 @@ on: push
 env:
   docker_username: ${{ github.repository_owner }}
   docker_password: ${{ secrets.GITHUB_TOKEN }}
+  VERSION_TAG: 0.0.1
 
 jobs: 
   Test:
@@ -20,7 +21,6 @@ jobs:
       - name: clone-down
         uses: actions/checkout@v3
       - name: docker compose build
-        run: export VERSION_TAG=0.0.1 && docker compose build
-      - run: docker image ls -a
+        run: docker compose build
       - name: docker push
         run: chmod +x ci/docker-push.sh && ci/docker-push.sh
