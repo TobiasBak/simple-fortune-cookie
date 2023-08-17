@@ -4,5 +4,9 @@ backend/backend
 # frontend binary
 frontend/frontend
 
+# applications
+frontend/application
+backend/application
+
 # actions runner
 actions-runner/
