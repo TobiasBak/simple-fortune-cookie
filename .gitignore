@@ -10,3 +10,5 @@ backend/application
 
 # actions runner
 actions-runner/
+
+.idea
