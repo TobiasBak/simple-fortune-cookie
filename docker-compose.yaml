@@ -1,6 +1,7 @@
-version: "3.8"
+version: "3.8" 
 services:
   frontend:
+    image: fortune-cookie-frontend:${VERSION_TAG}
     build:
       context: ./frontend
       dockerfile: ../Dockerfile
@@ -9,6 +10,7 @@ services:
       - BACKEND_DNS=localhost
 
   backend:
+    image: fortune-cookie-backend:${VERSION_TAG}
     build:
       context: ./backend
       dockerfile: ../Dockerfile
