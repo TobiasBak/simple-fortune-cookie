@@ -13,3 +13,11 @@ COPY --from=builder /app/appliation /application
 
 ENTRYPOINT [ "/application" ]
 
+FROM alpine:3.18.3 as debug
+
+COPY --from=builder /app/appliation /application
+
+ENTRYPOINT [ "/application" ]
+
+
+

@@ -5,6 +5,16 @@ services:
     build:
       context: ./frontend
       dockerfile: ../Dockerfile
+      target: production
+    environment:
+      - BACKEND_PORT=9000
+      - BACKEND_DNS=localhost
+  frontend-debug:
+    image: ghcr.io/tobiasbak/fortune-cookie/frontend:${VERSION_TAG}-debug
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile
+      target: debug
     environment:
       - BACKEND_PORT=9000
       - BACKEND_DNS=localhost
@@ -14,6 +24,16 @@ services:
     build:
       context: ./backend
       dockerfile: ../Dockerfile
+      target: production
     environment:
       - REDIS_DNS=redis
+  backend-debug:
+    image: ghcr.io/tobiasbak/fortune-cookie/backend:${VERSION_TAG}-debug
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile
+      target: debug
+    environment:
+      - REDIS_DNS=redis
+
       

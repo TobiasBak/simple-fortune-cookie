@@ -16,6 +16,8 @@ docker push $backendVersion
 docker tag $backendVersion $backendLatest
 
 docker push $backendLatest
+
+docker push $backendVersion-debug
 # Backend pushed
 
 
@@ -23,5 +25,7 @@ docker push $frontendVersion
 
 docker tag $frontendVersion $frontendLatest
 
-docker push $frontendLatest  &
+docker push $frontendLatest  
+
+docker push $frontendVersion-debug &
 wait
