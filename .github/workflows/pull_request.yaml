@@ -1,0 +1,15 @@
+name: Pull-request
+
+env:
+  docker_username: ${{ github.repository_owner }}
+  docker_password: ${{ secrets.GITHUB_TOKEN }}
+  VERSION_TAG: 0.0.1-PR
+
+on:
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+ Testing:
+    uses: ./.github/workflows/testing.yml
