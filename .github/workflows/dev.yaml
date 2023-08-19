@@ -14,3 +14,5 @@ jobs:
  Testing:
     uses: ./.github/workflows/testing.yml
     if: needs.pr-check.outputs.number == 'null'
+    permissions:
+      packages: write
