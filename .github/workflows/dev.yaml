@@ -16,3 +16,7 @@ jobs:
     if: needs.pr-check.outputs.number == 'null'
     permissions:
       packages: write
+    with:
+      docker_username: ${{ github.repository_owner }}
+      docker_password: ${{ secrets.GITHUB_TOKEN }}
+      VERSION_TAG: 0.0.1
