@@ -68,7 +68,7 @@ jobs:
             python functional-testing.py
 
   Deployment:
-    needs: [Docker-build-push]
+    needs: [Docker-functional-testing]
     uses: ./.github/workflows/deployment.yml
     secrets:
       KUBECONFIG: ${{ secrets.KUBECONFIG }}
