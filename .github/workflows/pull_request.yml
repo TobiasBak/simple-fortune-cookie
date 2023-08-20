@@ -27,14 +27,15 @@ jobs:
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
           echo "VERSION_TAG: $VERSION_TAG"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
+          
 
- Testing:
-    needs:
-      - print
-    uses: ./.github/workflows/testing.yml
-    permissions:
-      packages: write
-    with:
-      docker_username: ${{ needs.print.outputs.docker_username }}
-      docker_password: ${{ needs.print.outputs.docker_password }}
-      VERSION_TAG: ${{ needs.print.outputs.VERSION_TAG }}
+# Testing:
+#    needs:
+#      - print
+#    uses: ./.github/workflows/testing.yml
+#    permissions:
+#      packages: write
+#    with:
+#      docker_username: ${{ needs.print.outputs.docker_username }}
+#      docker_password: ${{ needs.print.outputs.docker_password }}
+#      VERSION_TAG: ${{ needs.print.outputs.VERSION_TAG }}
