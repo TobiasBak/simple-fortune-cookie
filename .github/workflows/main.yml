@@ -13,20 +13,35 @@ on:
 
 
 jobs:
+  print:
+    runs-on: ubuntu-latest
+    outputs:
+      docker_username: ${{ steps.step1.outputs.docker_username }}
+      VERSION_TAG: ${{ steps.step1.outputs.VERSION_TAG }}
+    steps:
+      - name: Print inputs passed to the reusable workflow
+        id: step1
+        run: |
+          echo "docker_username: $docker_username"
+          echo "docker_username=$docker_username" >> $GITHUB_OUTPUT
+          echo "VERSION_TAG: $VERSION_TAG"
+          echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
+
   Testing:
+    needs:
+      - print
     uses: ./.github/workflows/testing.yml
     permissions:
       packages: write
     with:
-      docker_username: ${{ github.repository_owner }}
+      docker_username: ${{ needs.print.outputs.docker_username }}
+      VERSION_TAG: ${{ needs.print.outputs.VERSION_TAG }}
+    secrets:
       docker_password: ${{ secrets.GITHUB_TOKEN }}
-      VERSION_TAG: 0.0.1
-
 
   Deployment:
     needs:
-      - Docker-functional-testing
-      - Test
+      - Testing
     uses: ./.github/workflows/deployment.yml
     secrets:
       KUBECONFIG: ${{ secrets.KUBECONFIG }}
