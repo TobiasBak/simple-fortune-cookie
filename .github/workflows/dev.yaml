@@ -12,6 +12,7 @@ on:
 
 jobs:
   print:
+    if: needs.pr-check.outputs.number == 'null'
     runs-on: ubuntu-latest
     outputs:
       docker_username: ${{ steps.step1.outputs.docker_username }}
