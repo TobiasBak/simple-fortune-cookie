@@ -23,8 +23,8 @@ jobs:
         run: |
           echo "docker_username: $docker_username"
           echo "docker_username=$docker_username" >> $GITHUB_OUTPUT
-          echo "VERSION_TAG: $VERSION_TAG"
-          echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
+          echo "docker_password: docker_password"
+          echo "docker_password=docker_password" >> $GITHUB_OUTPUT
           echo "VERSION_TAG: $VERSION_TAG"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
   Testing:
