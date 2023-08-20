@@ -2,18 +2,6 @@ name: Testing
 
 on:
   workflow_call:
-      secrets:
-        docker_username:
-          required: true
-        docker_password:
-          required: true
-        VERSION_TAG:
-          required: true
-
-env:
-  docker_username: ${{ secrets.docker_username }}
-  docker_password: ${{ secrets.docker_password }}
-  VERSION_TAG: ${{ secrets.VERSION_TAG }}
 
 jobs: 
   Test:
