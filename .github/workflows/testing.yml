@@ -2,6 +2,16 @@ name: Testing
 
 on:
   workflow_call:
+      secrets:
+        docker-password:
+          required: true
+        docker-username:
+          required: true
+        VERSION_TAG:
+          required: true
+
+
+
 
 jobs: 
   Test:
