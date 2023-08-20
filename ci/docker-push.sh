@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$docker_password" | docker login ghcr.io --username "$docker_username" --password-stdin
+echo "$docker_password" | docker login --username "$docker_username" --password-stdin ghcr.io
 
 docker_username_lower=$(echo "$docker_username" | tr '[:upper:]' '[:lower:]')
 docker_username=$docker_username_lower

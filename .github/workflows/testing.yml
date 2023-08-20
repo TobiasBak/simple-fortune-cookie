@@ -1,0 +1,74 @@
+name: Testing
+
+on:
+  workflow_call:
+      inputs:
+        docker_username:
+          required: true
+          type: string
+        VERSION_TAG:
+          required: true
+          type: string
+      secrets:
+        docker_password:
+          required: true
+
+env:
+  docker_username: ${{ inputs.docker_username }}
+  docker_password: ${{ secrets.docker_password }}
+  VERSION_TAG: ${{ inputs.VERSION_TAG }}
+
+
+jobs: 
+  Test:
+    runs-on: ubuntu-latest
+    container: golang:1.21.0-bookworm
+    steps:
+      - name: clone-down
+        uses: actions/checkout@v3
+      - name: Test
+        run: bash -eux ci/unit-test.sh
+      - name: upload ci folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: ci-folder
+          path: ci/
+      - name: upload compose file
+        uses: actions/upload-artifact@v3
+        with:
+          name: compose-file
+          path: docker-compose.yaml
+          
+  Docker-build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: clone-down
+        uses: actions/checkout@v3
+      - run: ls
+      - name: docker compose build
+        run: docker compose build
+      - name: docker push
+        run: bash -eux ci/docker-push.sh
+
+  Docker-functional-testing:
+    runs-on: ubuntu-latest
+    needs: [Docker-build-push]
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: compose-file
+      - uses: actions/download-artifact@v3
+        with:
+          name: ci-folder
+          path: ci
+      - name: docker pull images
+        run: docker compose pull
+      - name: Start docker
+        run: docker compose up -d & wait
+      - run: ls
+      - name: run functional test
+        run: |
+            cd ci
+            python functional-testing.py
