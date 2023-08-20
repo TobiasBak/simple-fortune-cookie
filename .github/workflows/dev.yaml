@@ -24,7 +24,7 @@ jobs:
           echo "docker_username=$docker_username" >> $GITHUB_OUTPUT
           echo "VERSION_TAG: $VERSION_TAG"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
- Testing:
+  Testing:
     uses: ./.github/workflows/testing.yml
     if: needs.pr-check.outputs.number == 'null'
     permissions:
