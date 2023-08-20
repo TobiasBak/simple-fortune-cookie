@@ -13,8 +13,8 @@ on:
 jobs:
  Testing:
     uses: ./.github/workflows/testing.yml
-    permissions:
-      packages: write
+    #permissions:
+    #  packages: write
     with:
       docker_username: ${{ github.repository_owner }}
       docker_password: ${{ github.token }}
