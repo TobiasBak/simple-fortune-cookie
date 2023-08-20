@@ -2,15 +2,18 @@ name: Testing
 
 on:
   workflow_call:
-      secrets:
-        docker-password:
+      inputs:
+        docker_username:
           required: true
-        docker-username:
+        docker_password:
           required: true
         VERSION_TAG:
           required: true
 
-
+env:
+  docker_username: ${{ inputs.docker_username }}
+  docker_password: ${{ inputs.docker_password }}
+  VERSION_TAG: ${{ inputs.VERSION_TAG }}
 
 
 jobs: 

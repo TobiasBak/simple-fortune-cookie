@@ -33,13 +33,13 @@ jobs:
     uses: ./.github/workflows/testing.yml
     permissions:
       packages: write
-#    with:
-#      docker_username: ${{ needs.print.outputs.docker_username }}
-#      #docker_password: ${{ needs.print.outputs.docker_password }}
-#      VERSION_TAG: ${{ needs.print.outputs.VERSION_TAG }}
-    secrets:
-      docker_password: ${{ secrets.GITHUB_TOKEN }}
-      VERSION_TAG: ${{ needs.print.outputs.VERSION_TAG }}
+    with:
       docker_username: ${{ needs.print.outputs.docker_username }}
+      docker_password: ${{ needs.print.outputs.docker_password }}
+      VERSION_TAG: ${{ needs.print.outputs.VERSION_TAG }}
+#    secrets:
+#      docker_password: ${{ secrets.GITHUB_TOKEN }}
+#      VERSION_TAG: ${{ needs.print.outputs.VERSION_TAG }}
+#      docker_username: ${{ needs.print.outputs.docker_username }}
           
 
