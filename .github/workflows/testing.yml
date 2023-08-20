@@ -6,16 +6,19 @@ on:
         docker_username:
           required: true
           type: string
-        docker_password:
-          required: true
-          type: string
+#        docker_password:
+#          required: true
+#          type: string
         VERSION_TAG:
           required: true
           type: string
+      secrets:
+        docker_password:
+          required: true
 
 env:
   docker_username: ${{ inputs.docker_username }}
-  docker_password: ${{ inputs.docker_password }}
+  docker_password: ${{ secrets.docker_password }}
   VERSION_TAG: ${{ inputs.VERSION_TAG }}
 
 
