@@ -41,8 +41,7 @@ jobs:
 
   Deployment:
     needs:
-      - Docker-functional-testing
-      - Test
+      - Testing
     uses: ./.github/workflows/deployment.yml
     secrets:
       KUBECONFIG: ${{ secrets.KUBECONFIG }}
