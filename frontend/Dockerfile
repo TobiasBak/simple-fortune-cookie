@@ -10,7 +10,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o appliation
 FROM scratch as production
 
 COPY --from=builder /app/appliation /application
-#COPY --from=builder /app/static /static
+COPY --from=builder /app/static /static
 COPY --from=builder /app/templates /templates
 
 ENTRYPOINT [ "/application" ]
