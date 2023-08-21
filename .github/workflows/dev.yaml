@@ -1,10 +1,5 @@
 name: Development
 
-env:
-  docker_username: ${{ github.repository_owner }}
-  docker_password: ${{ secrets.GITHUB_TOKEN }}
-  VERSION_TAG: 0.0.1-dev
-
 on: 
   push:
     branches-ignore: 
@@ -29,6 +24,8 @@ jobs:
   Testing:
     uses: ./.github/workflows/testing.yml
     if: needs.pr-check.outputs.number == null
+    needs:
+      - print
     permissions:
       packages: write
     with:

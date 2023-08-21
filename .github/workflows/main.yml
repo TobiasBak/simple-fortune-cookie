@@ -1,8 +1,4 @@
 name: Main
-env:
-  docker_username: ${{ github.repository_owner }}
-  docker_password: ${{ secrets.GITHUB_TOKEN }}
-  VERSION_TAG: 0.0.1
 
 on:
   push:
@@ -19,8 +15,10 @@ jobs:
       packages: write
     with:
       docker_username: ${{ github.repository_owner }}
-      docker_password: ${{ secrets.GITHUB_TOKEN }}
       VERSION_TAG: 0.0.1
+    secrets:
+      docker_password: ${{ secrets.GITHUB_TOKEN }}
+
 
 
   Deployment:
