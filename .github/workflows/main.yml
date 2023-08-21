@@ -42,7 +42,6 @@ jobs:
 
   Deployment:
     needs:
-      - Docker-functional-testing
       - Testing
     uses: ./.github/workflows/deployment.yml
     secrets:
