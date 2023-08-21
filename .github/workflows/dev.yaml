@@ -12,7 +12,7 @@ on:
 
 jobs:
   print:
-    if: ${{ needs.pr-check.outputs.number }} == 'null' || needs.pr-check.outputs.number == 0
+    if: needs.pr-check.outputs.number == null
     runs-on: ubuntu-latest
     outputs:
       docker_username: ${{ steps.step1.outputs.docker_username }}
@@ -25,7 +25,7 @@ jobs:
           echo "docker_username=$docker_username" >> $GITHUB_OUTPUT
           echo "VERSION_TAG: $VERSION_TAG"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
-          echo ${{ needs.pr-check.outputs.number }}
+
   Testing:
     uses: ./.github/workflows/testing.yml
     if: needs.pr-check.outputs.number == null
