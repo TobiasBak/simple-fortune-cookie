@@ -1,4 +1,5 @@
 name: Main
+
 env:
   docker_username: ${{ github.repository_owner }}
   docker_password: ${{ secrets.GITHUB_TOKEN }}
@@ -41,6 +42,7 @@ jobs:
 
   Deployment:
     needs:
+      - Docker-functional-testing
       - Testing
     uses: ./.github/workflows/deployment.yml
     secrets:

@@ -2,7 +2,7 @@ name: Development
 
 env:
   docker_username: ${{ github.repository_owner }}
-  docker_password: ${{ secrets.GITHUB_TOKEN }}
+  docker_password: ${{ github.token }}
   VERSION_TAG: 0.0.1-dev
 
 on: 
@@ -12,7 +12,7 @@ on:
 
 jobs:
   print:
-    if: needs.pr-check.outputs.number == 'null'
+    if: needs.pr-check.outputs.number == null
     runs-on: ubuntu-latest
     outputs:
       docker_username: ${{ steps.step1.outputs.docker_username }}
@@ -25,9 +25,12 @@ jobs:
           echo "docker_username=$docker_username" >> $GITHUB_OUTPUT
           echo "VERSION_TAG: $VERSION_TAG"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
+
   Testing:
     uses: ./.github/workflows/testing.yml
-    if: needs.pr-check.outputs.number == 'null'
+    if: needs.pr-check.outputs.number == null
+    needs:
+      - print
     permissions:
       packages: write
     with:

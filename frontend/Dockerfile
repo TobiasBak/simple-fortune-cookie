@@ -13,7 +13,6 @@ COPY --from=builder /app/appliation /application
 COPY --from=builder /app/static /static
 COPY --from=builder /app/templates /templates
 
-
 ENTRYPOINT [ "/application" ]
 
 FROM alpine:3.18.3 as debug
