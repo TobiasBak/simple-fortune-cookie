@@ -12,7 +12,7 @@ on:
 
 jobs:
   print:
-    if: ${{ needs.pr-check.outputs.number }} == 'null' || needs.pr-check.outputs.number == 0 || true
+    if: ${{ needs.pr-check.outputs.number }} == 'null' || needs.pr-check.outputs.number == 0
     runs-on: ubuntu-latest
     outputs:
       docker_username: ${{ steps.step1.outputs.docker_username }}
@@ -28,7 +28,7 @@ jobs:
           echo ${{ needs.pr-check.outputs.number }}
   Testing:
     uses: ./.github/workflows/testing.yml
-    if: needs.pr-check.outputs.number == 'null'
+    if: needs.pr-check.outputs.number == null
     permissions:
       packages: write
     with:
