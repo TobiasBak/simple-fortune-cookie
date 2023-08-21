@@ -5,6 +5,12 @@ on:
     branches-ignore: 
      - "main"
 
+env:
+  docker_username: ${{ github.repository_owner }}
+  docker_password: ${{ github.token }}
+  VERSION_TAG: 0.0.1-dev
+
+
 jobs:
   print:
     if: needs.pr-check.outputs.number == null
